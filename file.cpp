@@ -110,7 +110,7 @@ int fileEmulator::folderchange(std::string name) {;
 void fileEmulator::cdfile(file* name) {
     std::cout << "you are in " << name->name << " enter introduction, for exit enter ~" << std::endl;
     for (int i = 0; i < name->introduction.size(); ++i) {
-        std::cout << name->introduction[i];
+        std::cout << name->introduction[i]<<" ";
     }
     currentfolder->name = name->name;
     std::string n;
