@@ -43,7 +43,7 @@ void fileEmulator::cd(std::string path) {
             case 1: makepath(items[i]);
                 break;
             case 2: return;
-            default:std::cout << "unknown file or folder";
+            default:std::cout << "unknown file or folder"<<std::endl;
                 break;
         }
     }
@@ -51,14 +51,14 @@ void fileEmulator::cd(std::string path) {
 
 
 void fileEmulator::mkdir(std::string name) {
-    folder* a=new folder;
+    std::shared_ptr<folder> a(new folder);
     a->name = name;
     currentfolder->folders.push_back(a);
 }
 
 
 void fileEmulator::touch(std::string name) {
-     file* a=new file;
+    std::shared_ptr<file> a(new file);
     a->name = name;
     currentfolder->files.push_back(a);
 }
@@ -107,10 +107,10 @@ int fileEmulator::folderchange(std::string name) {;
 }
 
 
-void fileEmulator::cdfile(file* name) {
+void fileEmulator::cdfile(std::shared_ptr<file> name) {
     std::cout << "you are in " << name->name << " enter introduction, for exit enter ~" << std::endl;
     for (int i = 0; i < name->introduction.size(); ++i) {
-        std::cout << name->introduction[i]<<" ";
+        std::cout << name->introduction[i];
     }
     currentfolder->name = name->name;
     std::string n;
