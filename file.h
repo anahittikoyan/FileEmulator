@@ -12,7 +12,8 @@ public:
 		std::shared_ptr<folder> Root(new folder);
 		Root->name = "Root";
 		currentfolder = Root;
-		mapping(); }
+		mapping();
+	}
 
 	void ls();
 	void pwd();
