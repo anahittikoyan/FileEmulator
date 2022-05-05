@@ -1,6 +1,13 @@
 #include "file.h"
 
-void fileEmulator::ls() {
+fileEmulator::fileEmulator() {
+    std::shared_ptr<folder> Root(new folder);
+    Root->name = "Root";
+    currentfolder = Root;
+    mapping();
+}
+
+void fileEmulator::ls() const {
 
     for (int i = 0; i < (currentfolder->folders).size(); ++i) {
         std::cout << currentfolder->folders[i]->name << std::endl;
@@ -11,7 +18,7 @@ void fileEmulator::ls() {
 }
 
 
-void fileEmulator::pwd() {
+void fileEmulator::pwd() const{
     std::cout << currentpath << std::endl;
 }
 
