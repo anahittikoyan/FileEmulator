@@ -64,12 +64,16 @@ void fileEmulator::touch(std::string name) {
 }
 
 
+
 void fileEmulator::rm(std::string name) {
     for (int i = 0; i < currentfolder->files.size(); ++i) {
         if (currentfolder->files[i]->name == name) {
             currentfolder->files.erase(currentfolder->files.begin() + i);
+            return;
         }
     }
+     std::cout << "unknown file" << std::endl;
+
 }
 
 
@@ -77,8 +81,10 @@ void fileEmulator::rmdir(std::string name) {
     for (int i = 0; i < currentfolder->folders.size(); ++i) {
         if (currentfolder->folders[i]->name == name) {
             currentfolder->folders.erase(currentfolder->folders.begin() + i);
+            return;
         }
     }
+      std::cout << "unknown direction" << std::endl;
 }
 
 
@@ -109,7 +115,7 @@ int fileEmulator::folderchange(std::string name) {;
 void fileEmulator::cdfile(std::shared_ptr<file> name) {
     std::cout << "you are in " << name->name << " enter introduction, for exit enter ~" << std::endl;
     for (int i = 0; i < name->introduction.size(); ++i) {
-        std::cout << name->introduction[i];
+        std::cout << name->introduction[i]<<" ";
     }
     currentfolder->name = name->name;
     std::string n;
