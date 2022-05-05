@@ -1,3 +1,6 @@
+#ifndef FILE_H
+#define FILE_H
+
 #include <string>
 #include <iostream>
 #include <vector>
@@ -12,7 +15,7 @@ public:
 		std::shared_ptr<folder> Root(new folder);
 		Root->name = "Root";
 		currentfolder = Root;
-		mapping();
+		mapping(); 
 	}
 
 	void ls();
@@ -42,3 +45,5 @@ private:
 	void cdfile(std::shared_ptr<file>);
 	std::vector<std::string> path_parser(std::string );
 };
+
+#endif
