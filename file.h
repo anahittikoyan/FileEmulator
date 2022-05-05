@@ -39,6 +39,7 @@ private:
 	std::shared_ptr<folder> currentfolder ;
 	std::string currentpath = "Computer\\User\\Root";
 	std::vector<std::shared_ptr<folder>>history ;
+	
 	void makepath(std::string);
 	int folderchange(std::string);
 	void mapping();
