@@ -38,12 +38,11 @@ void fileEmulator::cdo() {
 void fileEmulator::cd(std::string path) {
     std::vector<std::string>items = path_parser(path);
     for (int i = 0; i < items.size(); ++i) {
-        int a = folderchange(items[i]);
-        switch (a) {
+        switch (folderchange(items[i])) {//1 case of direction, 2case of file
             case 1: makepath(items[i]);
                 break;
             case 2: return;
-            default:std::cout << "unknown file or folder"<<std::endl;
+            case 0:std::cout << "unknown file or folder"<<std::endl;
                 break;
         }
     }
@@ -88,9 +87,8 @@ void fileEmulator::rmdir(std::string name) {
 }
 
 
-std::string fileEmulator::makepath(std::string name) {
+void fileEmulator::makepath(std::string name) {
     currentpath += ("\\" + name);
-    return currentpath;
 }
 
 
@@ -108,7 +106,7 @@ int fileEmulator::folderchange(std::string name) {;
             return 2;
         }
     }
-    return false;
+    return 0;
 }
 
 
