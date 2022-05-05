@@ -102,7 +102,6 @@ int fileEmulator::folderchange(std::string name) {;
             return 2;
         }
     }
-    std::cout << "unknown folder" << std::endl;
     return false;
 }
 
