@@ -11,19 +11,19 @@ class fileEmulator {
 public:
 	std::map<std::string, void(fileEmulator::*)(std::string)> instructions;
 
-	fileEmulator() {
-		std::shared_ptr<folder> Root(new folder);
-		Root->name = "Root";
-		currentfolder = Root;
-		mapping(); 
-	}
+	fileEmulator();
+	fileEmulator(const fileEmulator&) = delete;
+	fileEmulator(const fileEmulator&&) = delete;
+	fileEmulator& operator=(const fileEmulator&) = delete;
+	fileEmulator& operator=(const fileEmulator&&) = delete;
+	~fileEmulator() = default;
 
-	void ls();
-	void pwd();
+	void ls() const;
+	void pwd() const;
 	void cdo();
 	void cd(std::string);
-	 void mkdir(std::string);
-	 void touch(std::string);
+	void mkdir(std::string);
+	void touch(std::string);
 	void rm(std::string);
 	void rmdir(std::string);
 private:
@@ -39,7 +39,7 @@ private:
 	std::shared_ptr<folder> currentfolder ;
 	std::string currentpath = "Computer\\User\\Root";
 	std::vector<std::shared_ptr<folder>>history ;
-	std::string makepath(std::string);
+	void makepath(std::string);
 	int folderchange(std::string);
 	void mapping();
 	void cdfile(std::shared_ptr<file>);
