@@ -115,8 +115,8 @@ void fileEmulator::cdfile(std::shared_ptr<file> name) {
     currentfolder->name = name->name;
     std::string n;
     while (n != "~") {
-        std::cin >> n;
         name->introduction.push_back(n);
+        std::cin >> n;
     }
 }
 void fileEmulator::mapping() {
